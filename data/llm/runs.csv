@@ -1,0 +1,2 @@
+timestamp,model,prompt_version,target,run,valid,invalid,requests,tokens,seconds
+2026-10-21T17:07:56,gemini-3.5-flash-lite,v1,dev,1,30,0,2,3981,75

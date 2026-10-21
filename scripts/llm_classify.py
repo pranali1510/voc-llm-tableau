@@ -11,7 +11,7 @@ Usage (PowerShell):
 Free-tier friendly: batches of reviews per request, a wait between requests, a daily token
 budget, and a cache so an interrupted or quota-stopped run resumes where it stopped.
 Optional settings: LLM_BATCH (25), LLM_SECONDS_BETWEEN_CALLS (65), LLM_DAILY_TOKENS (200000),
-LLM_RETRY_SECONDS (70).
+LLM_RETRY_SECONDS (70), PROMPT_VERSION (v1; set it to v2 to use prompts/classify_v2.md).
 Only public review text and its star rating are sent. Nothing personal is included.
 """
 import json
@@ -29,8 +29,8 @@ import config
 from taxonomy import OWNERS, SENTIMENTS, THEMES, in_scope
 
 BASE = "https://generativelanguage.googleapis.com/v1beta"
-PROMPT_FILE = Path("prompts/classify_v1.md")
-PROMPT_VERSION = "v1"
+PROMPT_VERSION = os.environ.get("PROMPT_VERSION", "v1")   # prompts/classify_<version>.md
+PROMPT_FILE = Path(f"prompts/classify_{PROMPT_VERSION}.md")
 LLM_DIR = Path("data/llm")
 CLEAN = Path(config.CLEAN_DIR)
 MAX_CHARS = 600

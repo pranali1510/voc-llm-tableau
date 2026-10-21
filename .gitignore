@@ -4,3 +4,4 @@ __pycache__/
 data/raw/
 data/clean/reviews_stage1.csv
 data/clean/gold_*.csv
+data/llm/usage.json

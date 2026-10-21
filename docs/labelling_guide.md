@@ -1,4 +1,4 @@
-# Labelling guide (version 1)
+# Labelling guide (version 1.1)
 
 Label every review yourself, from the review text and the star rating only. Do not use
 any AI tool for the labels: they are the answer key the LLM will be scored against.
@@ -18,8 +18,11 @@ any AI tool for the labels: they are the answer key the LLM will be scored again
 | `Other issue` | a problem that fits none of the above, or a vague complaint ("worst app", "bad") |
 
 Rules:
-- If a review mentions several problems, choose the **first** one mentioned.
-- A vague complaint with no detail is `Other issue`. Praise with no detail is `Praise / No issue`.
+- Ignore vague opening words such as "worst app" or "horrible". If a review mentions several problems, choose the **first specific** problem it names.
+- A complaint that names no area at all (just "bad", "worst") is `Other issue`. Praise with no detail is `Praise / No issue`.
+- Naming support or customer care in a complaint ("horrible support") is `Customer Support`.
+- A missing accessory or missing packaging (spoon, cutlery, carry bag, packaging) is `Wrong or Missing Items`. Damaged or spoiled items are `Food or Product Quality`.
+- Judge theme and sentiment from the **text**. If the rating is low but the text only praises ("great"), label `Praise / No issue` and `Positive`.
 - If the text is empty, only emoji, or only symbols, label by rating: 4-5 stars `Praise / No issue`, otherwise `Other issue`.
 - Money taken but order not delivered: `Refunds & Payments`. Order delivered late: `Delivery & Delay`.
 - Do not change a label after you have seen any model output.
@@ -33,3 +36,7 @@ Rules:
 | `Negative` | overall dissatisfied |
 
 Judge the whole review, not only the stars. A 5-star review that describes a serious problem is `Negative`.
+
+## Version history
+- 1.0: first guide.
+- 1.1: added after reading the first dev scores. It resolves four ambiguities: vague opening words, naming support, missing accessories, and low rating with praising text. Dev labels that disagreed with these rules were revised; every test label is made under 1.1 without seeing any model output.
